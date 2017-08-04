@@ -1,0 +1,46 @@
+<aside class="aside">
+    <div class="side-box">
+        <h3 class="side-title ft-title">Follow</h3>
+        <div class="side-content">
+            <ul class="clf">
+                <li class="fl">{{#if @blog.facebook}}<a href="#" class="social-link"><i class="fa fa-facebook"></i></a>{{/if}}</li>
+                <li class="fl">{{#if @blog.twitter}}<a href="#" class="social-link"><i class="fa fa-twitter"></i></a>{{/if}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="side-box">
+        <h3 class="side-title ft-title">Tags</h3>
+        <div class="side-content ft-content">
+            {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}
+                <ul class="tag-list clf">
+                    {{#foreach tags}}
+                        <li class="fl"><a href="/tag/{{slug}}">{{name}}</a></li>
+                    {{/foreach}}
+                </ul>
+            {{/get}}
+        </div>
+    </div>
+    <div class="side-box">
+        <h3 class="side-title ft-title">Recent Post</h3>
+        <div class="side-content">
+            {{#get "posts" limit="3"}}
+                {{#foreach posts}}
+                    <div class="recent-post">
+                        <h4 class="recent-title ft-title">{{title}}</h4>
+                        <p class="recent-date"><time>{{date}}</time></p>
+                    </div>
+                {{/foreach}}
+            {{/get}}
+        </div>
+    </div>
+    {{#if @labs.subscribers}}
+    <div class="side-box">
+        <h3 class="side-title ft-title">Subscribe</h3>
+        <div class="side-content">
+            <div class="subscribe">
+                {{subscribe_form placeholder="youremail@example.com"}}
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</aside>

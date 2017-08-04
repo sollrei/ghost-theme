@@ -1,0 +1,60 @@
+{{!< default}}
+
+{{> "site-header"}}
+
+{{#post}}
+    <main class="main">
+        <div class="post-detail pb-30">
+            <article class="post">
+                <div class="card pb-30">
+                    <header class="post-header">
+                        <h1 class="ft-title">{{title}}</h1>
+                        <time class="meta-date">{{date format="D MMMM YYYY"}}</time>
+
+                    </header>
+                    {{#if feature_image}}
+                        <figure class="post-image">
+                            <img src="{{feature_image}}" alt="">
+                        </figure>
+                    {{/if}}
+
+                    <section class="article">
+                        {{content}}
+                    </section>
+
+                    <div class="post-footer">
+                        {{#if tags}}
+                            <p class="post-tags clf">
+                                {{#foreach tags}}
+                                    <a class="post-tag" href="{{url}}">{{name}}</a>
+                                {{/foreach}}
+                            </p>
+                        {{/if}}
+                    </div>
+                </div>
+
+
+                <section class="post-author card">
+                    {{#author}}
+                        <div class="author-header">
+                            <h3 class="ft-title">About author</h3>
+                        </div>
+                        <div class="clf">
+                            {{#if profile_image}}
+                                <img src="{{profile_image}}" alt="" class="avatar fl mr-30">
+                            {{/if}}
+                            <h4 class="author-name"><a href="{{url}}">{{name}}</a></h4>
+                            {{#if bio}}
+                                <p class="bio">{{bio}}</p>
+                            {{else}}
+                                <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                            {{/if}}
+                        </div>
+                    {{/author}}
+                </section>
+            </article>
+        </div>
+
+    </main>
+
+{{/post}}

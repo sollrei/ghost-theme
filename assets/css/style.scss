@@ -1,0 +1,372 @@
+/* -----
+    color
+   ----- */
+$white: #fff;
+$dark: #a2a3a4;
+$gray: #e2e3e4;
+$primary: rgb(192, 152, 134);
+
+/* -----
+    global
+   ----- */
+body {
+    background: #f6f5f4;
+    font: 14px/1.5 Karla, Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #4c4c4c;
+}
+
+a {
+    transition: color .2s;
+    color: inherit;
+    &:hover {
+        color: $primary;
+    }
+}
+
+.pure-g [class *= "pure-u"] {
+    font-family: Lato, Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: inherit;
+}
+
+@for $i from 1 through 8 {
+    @each $name, $direct in (t, top), (b, bottom), (l, left), (r, right) {
+        .m#{$name}-#{$i * 5} {
+            margin-#{$direct}: $i * 5px;
+        }
+        .p#{$name}-#{$i * 5} {
+            padding-#{$direct}: $i * 5px;
+        }
+
+    }
+}
+
+.layout {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 1400px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.ft-gray {
+    color: $gray;
+}
+
+.ft-lit {
+    font-size: 12px;
+}
+
+.ft-center {
+    text-align: center;
+}
+
+.ft-title {
+    font-family: 'Crimson Text', Arial, Helvetica, sans-serif;
+}
+
+.ft-display {
+    font-family: 'Amatic SC', sans-serif;
+}
+
+.ft-content {
+    font-family: Karla, sans-serif;
+
+}
+
+/* -----
+    header
+   -----*/
+.header {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'Crimson Text', Arial, Helvetica, sans-serif;
+    .site-title {
+        font-size: 40px;
+        display: inline-block;
+        position: relative;
+        text-transform: capitalize;
+        &:before {
+            content: '';
+            left: 50%;
+            margin-left: -49px;
+            bottom: -10px;
+            position: absolute;
+            height: 44px;
+            width: 98px;
+            background: url(../images/leaf.png) no-repeat 0 0;
+            opacity: .3;
+        }
+        a {
+            position: relative;
+            z-index: 2;
+        }
+    }
+    .desc {
+        font-size: 14px;
+        font-family: Karla, sans-serif;
+        color: $primary;
+        letter-spacing: 2px;
+    }
+}
+
+
+/* -----
+    post-list
+   ----- */
+.post-list {
+
+}
+
+.card {
+    margin-bottom: 30px;
+    background: $white;
+}
+
+.post-card {
+
+    .post-card-image {
+        height: 400px;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    .post-card-content {
+        padding: 20px 20px 30px;
+    }
+    .post-header {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    .post-tags {
+        text-align: center;
+        font-size: 12px;
+        color: $primary;
+    }
+    .post-card-excerpt {
+    }
+    .post-date {
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: $gray;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .post-card {
+        .post-card-image {
+            height: 300px;
+        }
+    }
+}
+
+@media screen and (max-width: 374px) {
+    .post-card {
+        .post-card-image {
+            height: 200px;
+        }
+    }
+}
+
+.pagination {
+    margin-bottom: 40px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    .newer-posts,
+    .older-posts {
+        position: absolute;
+        top: 0;
+        padding: 15px 20px;
+        background: $white;
+    }
+    .older-posts {
+        right: 0;
+    }
+    .newer-posts {
+        left: 0;
+    }
+}
+
+/* -----
+    aside
+   ----- */
+.aside {
+    padding-left: 30px;
+    .side-box {
+        padding: 20px;
+        background: $white;
+        margin-bottom: 30px;
+    }
+    .side-title {
+        text-align: center;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        background: #f4f3f2;
+    }
+    .social-link {
+        $h: 40px;
+        display: inline-block;
+        height: $h;
+        width: $h;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 2px;
+        border: 1px solid $gray;
+        line-height: $h;
+        text-align: center;
+    }
+    .tag-list {
+        $h: 40px;
+        li {
+            display: inline-block;
+            border: 1px solid $gray;
+            height: $h;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            line-height: $h;
+            text-align: center;
+        }
+    }
+    .recent-post {
+        padding: 5px 0 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px dashed lighten($primary, 20%);
+        .recent-title {font-size: 16px;}
+        .recent-date {
+            font-size: 12px;
+            color: $gray;
+        }
+    }
+}
+
+.subscribe {
+    $h: 40px;
+    .subscribe-email {
+        height: $h;
+        border: 1px solid $gray;
+        display: block;
+        border-radius: 2px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        width: 100%;
+        &:focus {
+            outline: none;
+            border-color: lighten($primary, 20%);
+        }
+    }
+    button {
+        height: $h;
+        background: lighten($primary, 10%);
+        margin-top: 10px;
+        width: 100%;
+        border: 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
+
+
+/* -----
+    tag
+   ----- */
+.tag-wrap {
+    padding: 30px;
+}
+
+
+/* -----
+    footer
+   ----- */
+.footer {
+    padding: 40px 0 20px;
+    color: $gray;
+    text-align: center;
+}
+
+/* -----
+    post
+   ----- */
+.post-detail {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.post {
+    .post-header {
+        padding: 30px 0;
+        text-align: center;
+        h1 {
+            font-size: 30px;
+        }
+    }
+    .meta-date {
+        color: darken($gray, 30%);
+    }
+    img {
+        max-width:100%;
+    }
+    .post-tag {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 20px;
+        background: #f4f3f2;
+    }
+    .post-footer {
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+}
+
+.article {
+    padding: 1em 3em;
+    line-height: 1.8;
+    font-size: 16px;
+    p {
+        margin-top: 1em;
+        margin-bottom: 2em;
+    }
+    pre {
+        margin: 5px;
+        padding: 5px 10px;
+        background: #f2f3f4;
+    }
+    a {
+        color: $primary;
+    }
+}
+
+.post-author {
+    margin-top: 20px;
+    padding: 1em 3em;
+    .avatar {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+    .author-header {
+        font-size: 20px;
+    }
+    .author-name {
+        padding: 1em 0;
+    }
+}
+
+
+
+

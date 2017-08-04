@@ -1,0 +1,33 @@
+{{!< default}}
+
+
+
+{{> "site-header"}}
+
+<main class="main">
+    <div class="layout">
+        <div class="pure-g">
+            <div class="pure-u-2-3">
+                <div class="card">
+                    {{#tag}}
+                        <section class="tag-wrap ft-center">
+                            <h1 class="ft-title">{{name}}</h1>
+                            {{#if description}}
+                                <h2>{{description}}</h2>
+                            {{/if}}
+                            <span>{{count.posts}}</span>
+                        </section>
+                    {{/tag}}
+                </div>
+                <div class="post-list">
+                    {{#foreach posts}}
+                        {{> "post-card"}}
+                    {{/foreach}}
+                </div>
+            </div>
+            <div class="pure-u-1-3">
+                {{> "site-aside"}}
+            </div>
+        </div>
+    </div>
+</main>
